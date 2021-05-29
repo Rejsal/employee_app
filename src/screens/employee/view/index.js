@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native';
 
 function ViewEmployee() {
@@ -10,13 +10,6 @@ function ViewEmployee() {
             employee
         }
     })
-    const { employee: employeeDispatch } = useDispatch(({ employee }) => {
-        return {
-            employee
-        }
-    })
-
-    const { getEmployee } = employeeDispatch
 
     const navigation = useNavigation();
 
@@ -25,21 +18,21 @@ function ViewEmployee() {
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.subContainer}>
                 <View style={styles.titleView}>
-                    <TouchableOpacity onPress={()=> {
+                    <TouchableOpacity onPress={() => {
                         navigation.goBack()
                     }}>
-                        <Image style={styles.imageStyle} source={require('../../../assets/arrow.png')}/>
+                        <Image style={styles.imageStyle} source={require('../../../assets/arrow.png')} />
                     </TouchableOpacity>
-                <Text style={styles.heading}>{employee.name ? employee.name : ''}</Text>               
+                    <Text style={styles.heading}>{employee.name ? employee.name : ''}</Text>
                 </View>
-                <View style={{marginTop:25}}>
-                {employee.profile_image ? <Image style={styles.imageContainer} source={{ uri: employee.profile_image }} /> : <View style={[styles.imageContainer, styles.alignCenter]}><Image style={styles.icon} source={require('../../../assets/error.png')} /></View>}
-                {employee.email?<Text style={styles.contentTitle}>Email: <Text style={styles.content}>{employee.email}</Text></Text>:null}
-                {employee.username?<Text style={styles.contentTitle}>Username: <Text style={styles.content}>{employee.username}</Text></Text>:null}
-                {employee.phone?<Text style={styles.contentTitle}>Phone: <Text style={styles.content}>{employee.phone}</Text></Text>:null}
-                {employee.website?<Text style={styles.contentTitle}>Website: <Text style={styles.content}>{employee.website}</Text></Text>:null}
-                {employee.address?<Text style={styles.contentTitle}>Address: <Text style={styles.content}>{`${employee.address.street}, ${employee.address.city?employee.address.city:''}`}</Text></Text>:null}
-                {employee.company?<Text style={styles.contentTitle}>Company Details: <Text style={styles.content}>{`${employee.company.name}, ${employee.company.bs?employee.company.bs:''}`}</Text></Text>:null}
+                <View style={{ marginTop: 25 }}>
+                    {employee.profile_image ? <Image style={styles.imageContainer} source={{ uri: employee.profile_image }} /> : <View style={[styles.imageContainer, styles.alignCenter]}><Image style={styles.icon} source={require('../../../assets/error.png')} /></View>}
+                    {employee.email ? <Text style={styles.contentTitle}>Email: <Text style={styles.content}>{employee.email}</Text></Text> : null}
+                    {employee.username ? <Text style={styles.contentTitle}>Username: <Text style={styles.content}>{employee.username}</Text></Text> : null}
+                    {employee.phone ? <Text style={styles.contentTitle}>Phone: <Text style={styles.content}>{employee.phone}</Text></Text> : null}
+                    {employee.website ? <Text style={styles.contentTitle}>Website: <Text style={styles.content}>{employee.website}</Text></Text> : null}
+                    {employee.address ? <Text style={styles.contentTitle}>Address: <Text style={styles.content}>{`${employee.address.street}, ${employee.address.city ? employee.address.city : ''}`}</Text></Text> : null}
+                    {employee.company ? <Text style={styles.contentTitle}>Company Details: <Text style={styles.content}>{`${employee.company.name}, ${employee.company.bs ? employee.company.bs : ''}`}</Text></Text> : null}
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -74,8 +67,8 @@ const styles = StyleSheet.create({
     },
     imageStyle: {
         height: 20,
-        width:20,
-        resizeMode:'contain'
+        width: 20,
+        resizeMode: 'contain'
     },
     alignCenter: {
         alignItems: 'center',

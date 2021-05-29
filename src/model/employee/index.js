@@ -83,7 +83,6 @@ export default {
         async searchEmployees(payload) {
             try {
                 await searchEmployeesFromTable(payload, async result => {
-                    console.log(result, payload)
                     if (result && result.length > 0) {
                         this.onGetEmployees(result)
                     }

@@ -44,10 +44,10 @@ export async function getEmployeesFromTable(resultCB) {
             const len = results[0].rows.length
             for (let i = 0; i < len; i++) {
                 let item = results[0].rows.item(i);
-                if(item.company) {
+                if (item.company) {
                     item.company = JSON.parse(item.company)
                 }
-                if(item.address) {
+                if (item.address) {
                     item.address = JSON.parse(item.address)
                 }
                 data.push(item)
@@ -71,10 +71,10 @@ export async function searchEmployeesFromTable(payload, resultCB) {
             const len = results[0].rows.length
             for (let i = 0; i < len; i++) {
                 let item = results[0].rows.item(i);
-                if(item.company) {
+                if (item.company) {
                     item.company = JSON.parse(item.company)
                 }
-                if(item.address) {
+                if (item.address) {
                     item.address = JSON.parse(item.address)
                 }
                 data.push(item)
@@ -89,7 +89,7 @@ export async function searchEmployeesFromTable(payload, resultCB) {
 //get employees from API
 export async function getEmployeesFromAPI() {
     return (await api())
-    .get(config.employee.list)
-    .then(res => res.data)
-    .catch(catchHandler);
+        .get(config.employee.list)
+        .then(res => res.data)
+        .catch(catchHandler);
 }

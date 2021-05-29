@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         color: '#990000',
         fontSize: 27,
         fontWeight: 'bold',
-        marginBottom:10
+        marginBottom: 10
     },
     inputContainer: {
         backgroundColor: '#fff',
