@@ -33,10 +33,10 @@ function ViewEmployee() {
                 <Text style={styles.heading}>{employee.name ? employee.name : ''}</Text>               
                 </View>
                 <View style={{marginTop:20}}>
-                <Text style={styles.content}>{employee.email ? employee.email : ''}</Text>
-                <Text style={styles.content}>{employee.address ? employee.address.city : ''}</Text>
-                <Text style={styles.content}>{employee.website ? employee.address.website : ''}</Text>
-                <Text style={styles.content}>{employee.company ? employee.company.name : ''}</Text>
+                {employee.email?<Text style={styles.contentTitle}>Email: <Text style={styles.content}>{employee.email}</Text></Text>:null}
+                {employee.username?<Text style={styles.contentTitle}>Username: <Text style={styles.content}>{employee.username}</Text></Text>:null}
+                {employee.website?<Text style={styles.contentTitle}>Website: <Text style={styles.content}>{employee.website}</Text></Text>:null}
+                {employee.company?<Text style={styles.contentTitle}>Company Details: <Text style={styles.content}>{`${employee.company.name}, ${employee.company.bs?employee.company.bs:''}`}</Text></Text>:null}
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -75,10 +75,14 @@ const styles = StyleSheet.create({
         fontSize: 27,
         fontWeight: 'bold'
     },
-
+    contentTitle: {
+        color: 'grey',
+        fontSize: 16,
+        marginTop: 2
+    },
     content: {
         color: '#000000',
-        fontSize: 16,
+        fontSize: 16
     }
 })
 

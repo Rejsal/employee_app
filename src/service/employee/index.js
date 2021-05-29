@@ -25,7 +25,7 @@ export async function insertEmployeeTable(data) {
     try {
         let db = await SQLite.openDatabase({ name: database, location: 'default' })
         return await db.executeSql(
-            "INSERT OR REPLACE INTO employee ( id, name, username, profile_image, email, address, phone, website, company ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? );", [data.id, data.name, data.username, data.email, data.profile_image, JSON.stringify(data.address), data.phone, data.website, JSON.stringify(data.company)]
+            "INSERT OR REPLACE INTO employee ( id, name, username, profile_image, email, address, phone, website, company ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? );", [data.id, data.name, data.username, data.profile_image, data.email, JSON.stringify(data.address), data.phone, data.website, JSON.stringify(data.company)]
         );
     } catch (e) {
         throw e

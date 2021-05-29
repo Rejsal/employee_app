@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
     icon: {
         width: 20,
         height: 20,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        tintColor: '#fff'
     },
     heading: {
         fontSize: 20,
