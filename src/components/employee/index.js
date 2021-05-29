@@ -8,7 +8,7 @@ const EmployeeCard = (props) => {
             props.onClickCard(item)
         }}>
             <View style={styles.subContainer}>
-                {item.image ? <Image style={styles.imageContainer} source={{ uri: item.image }} /> : <View style={[styles.imageContainer, styles.alignCenter]}><Image style={styles.icon} source={require('../../assets/error.png')} /></View>}
+                {item.profile_image ? <Image style={styles.imageContainer} source={{ uri: item.profile_image }} /> : <View style={[styles.imageContainer, styles.alignCenter]}><Image style={styles.icon} source={require('../../assets/error.png')} /></View>}
                 <View style={styles.rightContainer}>
                     <Text style={styles.heading}>{item.name ? item.name : ''}</Text>
                     <Text style={styles.content}>{item.company && item.company.name ? item.company.name : ''}</Text>

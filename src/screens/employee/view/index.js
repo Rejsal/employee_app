@@ -36,6 +36,7 @@ function ViewEmployee() {
                 {employee.email?<Text style={styles.contentTitle}>Email: <Text style={styles.content}>{employee.email}</Text></Text>:null}
                 {employee.username?<Text style={styles.contentTitle}>Username: <Text style={styles.content}>{employee.username}</Text></Text>:null}
                 {employee.website?<Text style={styles.contentTitle}>Website: <Text style={styles.content}>{employee.website}</Text></Text>:null}
+                {employee.address?<Text style={styles.contentTitle}>Address: <Text style={styles.content}>{`${employee.address.street}, ${employee.address.city?employee.address.city:''}`}</Text></Text>:null}
                 {employee.company?<Text style={styles.contentTitle}>Company Details: <Text style={styles.content}>{`${employee.company.name}, ${employee.company.bs?employee.company.bs:''}`}</Text></Text>:null}
                 </View>
             </ScrollView>
