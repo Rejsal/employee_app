@@ -59,6 +59,33 @@ export async function getEmployeesFromTable(resultCB) {
     }
 }
 
+//search employees from employee table
+export async function searchEmployeesFromTable(payload, resultCB) {
+    try {
+        let db = await SQLite.openDatabase({ name: database, location: 'default' })
+        let results = await db.executeSql(
+            "SELECT * FROM employee WHERE name LIKE ? OR email LIKE ?;", [`%${payload}%`, `%${payload}%`]
+        );
+        let data = []
+        if (results && results.length > 0 && results[0].rows) {
+            const len = results[0].rows.length
+            for (let i = 0; i < len; i++) {
+                let item = results[0].rows.item(i);
+                if(item.company) {
+                    item.company = JSON.parse(item.company)
+                }
+                if(item.address) {
+                    item.address = JSON.parse(item.address)
+                }
+                data.push(item)
+            }
+        }
+        resultCB(data)
+    } catch (e) {
+        throw e
+    }
+}
+
 //get employees from API
 export async function getEmployeesFromAPI() {
     return (await api())

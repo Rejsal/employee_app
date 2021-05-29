@@ -1,5 +1,5 @@
 import { showAlert } from "../../helper";
-import { createEmployeeTable, getEmployeesFromAPI, getEmployeesFromTable, insertEmployeeTable } from "../../service/employee";
+import { createEmployeeTable, getEmployeesFromAPI, getEmployeesFromTable, insertEmployeeTable, searchEmployeesFromTable } from "../../service/employee";
 
 export default {
     state: {
@@ -77,6 +77,20 @@ export default {
             empList.forEach(v => {
                 insertEmployeeTable(v)
             })
+        },
+
+        //search emplyees
+        async searchEmployees(payload) {
+            try {
+                await searchEmployeesFromTable(payload, async result => {
+                    console.log(result, payload)
+                    if (result && result.length > 0) {
+                        this.onGetEmployees(result)
+                    }
+                })
+            } catch (e) {
+                this.onError(e && e.message ? e.message : null)
+            }
         }
     }
 };

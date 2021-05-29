@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, View, SafeAreaView, ActivityIndicator, StyleSheet, FlatList } from 'react-native';
+import { Text, View, SafeAreaView, ActivityIndicator, StyleSheet, FlatList, TextInput } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import EmployeeCard from '../../components/employee';
 import { useNavigation } from '@react-navigation/native';
@@ -16,7 +16,7 @@ function Employee() {
         }
     })
 
-    const { getEmployees, getEmployee } = employeeDispatch
+    const { getEmployees, getEmployee, searchEmployees } = employeeDispatch
 
     const navigation = useNavigation();
 
@@ -35,6 +35,9 @@ function Employee() {
         <SafeAreaView style={styles.container}>
             <View style={styles.subContainer}>
                 <Text style={styles.heading}>Employees</Text>
+                <TextInput style={styles.inputContainer} placeholder={'Search'} onChangeText={(text) => {
+                    searchEmployees(text)
+                }} />
                 {loading ? <View style={styles.loaderContainer}><ActivityIndicator size={'large'} /></View> :
                     employees.length > 0 ? <FlatList
                         showsVerticalScrollIndicator={false}
@@ -74,8 +77,18 @@ const styles = StyleSheet.create({
     heading: {
         color: '#990000',
         fontSize: 27,
-        fontWeight: 'bold'
-    }
+        fontWeight: 'bold',
+        marginBottom:10
+    },
+    inputContainer: {
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#990000',
+        height: 40,
+        paddingHorizontal: 10,
+        borderRadius: 8
+    },
+
 })
 
 export default Employee;
