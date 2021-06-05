@@ -78,7 +78,6 @@ export default {
 
         //insert employee table
         async insertEmployeeIntoTable(empList) {
-            let v = empList[0]
             empList.forEach(async v => {
                 await database.action(async () => {
                     await employee.create((entry) => {
